@@ -1,61 +1,171 @@
 :root {
-    --shadox: 2px 2px 9px #000000;
-    --dark-color: #2a2a2a;
-    --main-color: #00b4d8;
+  --shadox: 2px 2px 9px #000000;
+  --dark-color: #2a2a2a;
+  --main-color: #00b4d8;
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url("images/paul-pastourmatzis-KT3WlrL_bsg-unsplash.jpg");
+  background-size: cover;
+  background-position: top center;
+  backdrop-filter: blur(3px);
+  font-family: "Montserrat", sans-serif;
 }
 .app-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.4)
+  );
 }
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px 0;
-    border-radius: 4px;
-    border-bottom: 5px solid var(--main-color);
-    background-color: rgba(255, 255, 255, 0.3);
-    padding: 0 1rem;
-    transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  border-radius: 4px;
+  border-bottom: 5px solid var(--main-color);
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0 1rem;
+  transition: all 0.2s ease;
 }
 
 .header .search-box {
-    width: 100%;
-    max-width: 280px;
-    height: 46px;
-    border: none;
-    outline: none;
+  width: 100%;
+  max-width: 280px;
+  height: 46px;
+  border: none;
+  outline: none;
 
+  font-size: 20px;
+  font-weight: 300;
+  transition: 0.2s ease-out;
 
-    font-size: 20px;
-    font-weight: 300;
-    transition: 0.2s ease-out;
-
-    background-color: transparent;
-
+  background-color: transparent;
 }
 
 .header:focus-within {
-    background-color: rgba(250, 250, 250, 0.6);
+  background-color: rgba(250, 250, 250, 0.6);
 }
 
 .search-box::placeholder {
-    color: var(--dark-color);
+  color: var(--dark-color);
 }
 
 .input-icon {
-    --ionicon-stroke-width: 55px;
-    cursor: pointer;
-    color: var(--dark-color);
+  --ionicon-stroke-width: 55px;
+  cursor: pointer;
+  color: var(--dark-color);
+}
+/* ? loader styles */
+.bouncer {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #00000066;
+}
+
+.bouncer div {
+  width: 40px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  background-color: var(--main-color);
+  animation: bouncer 0.6s cubic-bezier(0.19, 0.57, 0.3, 98) infinite alternate;
+}
+
+.bouncer div:nth-child(2) {
+  animation-delay: 0.1s;
+  opacity: 0.8;
+}
+
+.bouncer div:nth-child(3) {
+  animation-delay: 0.2s;
+  opacity: 0.6;
+}
+
+.bouncer div:nth-child(4) {
+  animation-delay: 0.3s;
+  opacity: 0.4;
+}
+
+@keyframes bouncer {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-2px);
+  }
+}
+
+/* error styles */
+
+.error {
+  display: none;
+  position: absolute;
+  align-items: center;
+  padding: 1.1rem;
+  color: #fff;
+  gap: 0.6rem;
+  border-radius: 0.4rem;
+  bottom: 1rem;
+  right: 0;
+  left: 1rem;
+  justify-content: flex-start;
+  width: max-content;
+  box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.75);
+  height: 20px;
+  text-transform: capitalize;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+@keyframes show-notif {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  40% {
+    transform: translateX(5%);
+  }
+
+  80% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes hide-notif {
+  0% {
+    transform: translateX(10px);
+  }
+
+  40% {
+    transform: translateX(0%);
+  }
+
+  80% {
+    transform: translateX(5%);
+  }
+
+  100% {
+    transform: translateX(calc(-100% + -35px));
+  }
 }
