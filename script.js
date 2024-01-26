@@ -37,6 +37,7 @@ function fetchData () {
     }).
     catch(err => {
         console.log(err)
+        errorHandler()
     }).
     finally(() => {
         loader.style.display = 'none'
@@ -64,6 +65,27 @@ function showTime(){
     let date = now.getDate()
 
     return `${day} ${date} ${month} ${year}`
+}
+
+function errorHandler () {
+
+    const errorContainer = document.querySelector('.error')
+
+    errorContainer.style.display = 'flex'
+    errorContainer.style.animation = 'show-notif 500ms ease forwards'
+    searchInput.value = ''
+    mainContainer.innerHTML = ''
+    
+    
+    setTimeout(() => {
+        errorContainer.style.animation = 'hide-notif 500ms ease forwards'
+    }, 4000);
+    
+    setTimeout(() => {
+        errorContainer.style.display = 'none'
+        errorContainer.style.animation = ''
+    }, 6000);
+
 }
 
 // a button for phone devices
